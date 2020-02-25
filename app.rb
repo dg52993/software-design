@@ -22,9 +22,13 @@ get "/" do
 end
 
 get "/events/:id" do
-    puts params[:id]
+    @event = events_table.where(id: params[:id]).first
+    view "event"
 end
 
-
+get "/events/:id/rsvps/new" do
+    @event = events_table.where(id: params[:id]).first
+    view "new_rsvp"
+end
 
 
